@@ -9,5 +9,12 @@ public class MiGestorSortida {
         System.out.println(text);
         System.out.println("-----------------");
     }
-
+    
+    public ArrayList<String> estatsAhorcat(){
+        ArrayList<String> arrayStringsAhorcat = new ArrayList<String>();
+        
+        
+        
+        return arrayStringsAhorcat;
+    }
 }
