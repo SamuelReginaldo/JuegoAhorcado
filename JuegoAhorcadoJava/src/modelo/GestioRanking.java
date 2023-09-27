@@ -1,5 +1,5 @@
 
-package main;
+package modelo;
 
 import java.util.Date;
 
