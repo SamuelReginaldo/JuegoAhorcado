@@ -9,23 +9,22 @@ import vista.MiGestorEntrada;
 
 public class GestioRanking {
     
-    private String rutaFitxerRanking;
-    private String nomJugador;
-    private int punts;
-    private String dataString;
-    private Date data;
-    private int numParaules;
+    private static String rutaFitxerRanking;
+    private static String nomJugador;
+    private static int punts;
+    private static String dataString;
+    private static Date data;
+    private static int numParaules;
     
-    public void afegirRanking( ){
+    public static void afegirRanking( ){
         
          
         nomJugador = MiGestorEntrada.demanarParaules("Introduir nom de juagdor: ");
         
-        punts = partida.getPunts();
+        punts = GestioPartida.getPunts();
         
         dataString = data.getDay() + "/" + data.getMonth() + "/" + data.getYear();
         
-       
         
         try(FileWriter escriure = new FileWriter(rutaFitxerRanking, true)){
         
