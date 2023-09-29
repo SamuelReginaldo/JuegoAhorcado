@@ -10,7 +10,7 @@ import vista.MiGestorSortida;
 
 public class GestioFitxer {
     //Fitxero Matricula
-    static String rutaFitxerParaules = "Paraules.txt";
+    static String rutaFitxerParaules = "paraules.txt";
     static String rutaDirectoriParaules = "fitxers";
 
     static File fitxerParaules = new File(rutaDirectoriParaules + "/" + rutaFitxerParaules);
