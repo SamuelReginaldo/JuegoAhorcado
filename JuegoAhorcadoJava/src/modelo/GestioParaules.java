@@ -14,6 +14,16 @@ public class GestioParaules {
         }
 
     }
+    public static void eliminarParaula() {
+        String paraula = MiGestorEntrada.demanarParaules("Introduir nova paraula: ");
+        ArrayList<String> paraules = GestioFitxer.getLlistaParaules();
+        if (validarParaula(paraula) && !cercarParaula(paraula)) {
+            paraula = paraula.toUpperCase();
+            paraules.remove(paraula);
+            GestioFitxer.reescriureFitxerParaules(paraules);
+        }
+
+    }
 
     private static boolean validarParaula(String paraula) {
         if (paraula.toUpperCase().matches("[A-Z]")) {
