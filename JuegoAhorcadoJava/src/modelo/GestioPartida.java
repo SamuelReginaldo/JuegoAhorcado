@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import vista.MiGestorEntrada;
+import modelo.GestioParaules;
 import Acces_fitxer.GestioFitxer;
 import java.util.ArrayList;
 import vista.MiGestorSortida;
@@ -27,6 +28,22 @@ public class GestioPartida {
         punts = 100;
         int errors = 0;
         boolean continuar = true, acert;
+        while (continuar) {
+            opcioMenu = MiGestorEntrada.demanarParaules("Afegir Paraula(1), Eliminar Paraula(2) o Jugar(3)\n>");
+            switch (opcioMenu) {
+                case "1":
+                    GestioParaules.afegirParaula();
+                    break;
+                case "2":
+                    GestioParaules.eliminarParaula();
+                    break;
+                case "3":
+                    continuar = false;
+                    break;
+            }
+        }
+        
+        continuar = true;
         
         for(int i = 0; i<paraula.length(); i++){
            lletresParaula.add(paraula.charAt(i));

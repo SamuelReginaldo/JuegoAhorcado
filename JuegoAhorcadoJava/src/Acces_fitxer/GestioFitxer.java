@@ -9,6 +9,7 @@ import vista.MiGestorEntrada;
 import vista.MiGestorSortida;
 
 public class GestioFitxer {
+
     //Fitxero Matricula
     static String rutaFitxerParaules = "paraules.txt";
     static String rutaDirectoriParaules = "fitxers";
@@ -41,14 +42,32 @@ public class GestioFitxer {
         } catch (Exception ex) {
             MiGestorSortida.imprimirText("ERROR D'ESCRIPTURA ");
         }
-        
+
     }
-    
+
+    public static void reescriureFitxerParaules(ArrayList<String> paraules) {
+        try {
+            FileWriter fw = new FileWriter(fitxerParaules, true);
+            FileWriter fw2 = new FileWriter(fitxerParaules);
+            fw2.write("");
+            for (String p : paraules) {
+                fw.write(
+                        p + ";"
+                );
+            }
+
+            fw.close();
+        } catch (Exception ex) {
+            MiGestorSortida.imprimirText("ERROR D'ESCRIPTURA ");
+        }
+
+    }
+
     public static ArrayList<String> getLlistaParaules() {
         ArrayList<String> paraules = new ArrayList();
 
         if (fitxerParaules.length() > 0) {
-            try (Scanner lector = new Scanner(fitxerParaules)) {
+            try ( Scanner lector = new Scanner(fitxerParaules)) {
 
                 lector.useDelimiter(";");
 
