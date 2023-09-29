@@ -1,6 +1,7 @@
 package modelo;
 
-import java.util.Random;
+import Acces_fitxer.GestioFitxer;
+import java.util.ArrayList;
 import vista.MiGestorSortida;
 
 public class GestioPartida {
@@ -35,9 +36,10 @@ public class GestioPartida {
     
     
     private String paraulaAleatoria(){
-       Random rn = new Random();
+       ArrayList<String> paraules = GestioFitxer.getLlistaParaules();
+       int num = (int) Math.random() * (paraules.size()-1);
        
-       return "hola";
+       return paraules.get(num);
     }
     
     
