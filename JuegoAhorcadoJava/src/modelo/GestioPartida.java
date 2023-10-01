@@ -27,9 +27,9 @@ public class GestioPartida {
         //Lletra encertada -1
         punts = 100;
         int errors = 0;
-        boolean continuar = true, acert;
+        boolean continuar = true, acert = false;
         while (continuar) {
-            opcioMenu = MiGestorEntrada.demanarParaules("Afegir Paraula(1), Eliminar Paraula(2) o Jugar(3)\n>");
+            opcioMenu = MiGestorEntrada.demanarParaules("Afegir Paraula(1), Eliminar Paraula(2), Jugar(3) o Veure els Rankings(4)\n>");
             switch (opcioMenu) {
                 case "1":
                     GestioParaules.afegirParaula();
@@ -40,6 +40,9 @@ public class GestioPartida {
                 case "3":
                     continuar = false;
                     break;
+                case "4":
+                    GestioRanking.comprobarRanking();
+                    break;
             }
         }
         
@@ -49,33 +52,34 @@ public class GestioPartida {
            lletresParaula.add(paraula.charAt(i));
            paraulaMostrar.add('_');
         }
-        
+
         while(continuar){
             System.out.println(MiGestorSortida.estatsAhorcat(errors));
             System.out.println("******************");
-            for (int i = 0; i < paraula.length(); i++) {
-                System.out.print(paraulaMostrar.get(i) + '.');
+            for (int i = 0; i < paraulaMostrar.size(); i++) {
+                System.out.print(paraulaMostrar.get(i) + ".");
             }
+            System.out.println("\n******************");
+            
             opcioMenu = MiGestorEntrada.demanarParaules("Probar lletra(1) o Adivinar Paraula(2)\n>");
             
             if(opcioMenu.equalsIgnoreCase("1")){
                 
                 lletraProbar = MiGestorEntrada.demanarParaules("Proba una lletra -> ");
                 
-                
+                acert = false;
                 for(int i = 0; i<paraula.length(); i++){
-                    acert = false;
                     if(lletraProbar.equalsIgnoreCase(String.valueOf(paraula.charAt(i)))){
                         paraulaMostrar.add(i, lletraProbar.charAt(0));
                         acert = true;
-                    }
-                    if (acert) {
+                    }      
+                }
+                if (acert) {
                         punts--;
                     }else{
                         punts -= 10;
                         errors++;
                     }
-                }
             
             } else if (opcioMenu.equalsIgnoreCase("2")){
                 
@@ -84,15 +88,24 @@ public class GestioPartida {
                 paraulaAdivinar = MiGestorEntrada.demanarParaules("Adivina la paraula -> ");
                 
                 if(paraulaAdivinar.equalsIgnoreCase(paraula)){
-                    
+                    System.out.println("!!!!!!!!!!!!!!!!!!!");
+                    System.out.println("Has GUANYAT amb " + punts + "/100 punts.\nRANKING: ");
+                    GestioRanking.afegirRanking(punts, paraula.length());
                     continuar = false;
                 } else {
                     punts -= 10;
                     errors++;
                 }
             }
+            
+            if(errors == 10){
+                System.out.println("");
+                System.out.println(MiGestorSortida.estatsAhorcat(errors));
+                System.out.println("!!!!!!!!!!!!!!!!!!!");
+                System.out.println("HAS PERDUT la paraula era ->" + paraula);
+                continuar = false;
+            }
         }
-        GestioRanking.afegirRanking();
     }
 
     public static int getPunts() {

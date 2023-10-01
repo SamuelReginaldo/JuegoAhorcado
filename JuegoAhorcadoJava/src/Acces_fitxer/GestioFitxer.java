@@ -13,8 +13,10 @@ public class GestioFitxer {
     //Fitxero Matricula
     static String rutaFitxerParaules = "paraules.txt";
     static String rutaDirectoriParaules = "fitxers";
+    static String rutaFitxerRankings = "ranking.txt";
 
     static File fitxerParaules = new File(rutaDirectoriParaules + "/" + rutaFitxerParaules);
+    static File fitxerRankings = new File(rutaDirectoriParaules + "/" + rutaFitxerRankings);
     static File directoriParaules = new File(rutaDirectoriParaules);
 
     public static void crearFitxerParaules() {
@@ -68,6 +70,24 @@ public class GestioFitxer {
 
         if (fitxerParaules.length() > 0) {
             try ( Scanner lector = new Scanner(fitxerParaules)) {
+
+                lector.useDelimiter(";");
+
+                while (lector.hasNext()) {
+                    paraules.add(lector.next());
+                }
+            } catch (Exception ex) {
+                MiGestorSortida.imprimirText("ERROR DE LECTURA");
+            }
+        }
+        return paraules;
+    }
+    
+    public static ArrayList<String> getLlistaRankings() {
+        ArrayList<String> paraules = new ArrayList();
+
+        if (fitxerRankings.length() > 0) {
+            try ( Scanner lector = new Scanner(fitxerRankings)) {
 
                 lector.useDelimiter(";");
 
