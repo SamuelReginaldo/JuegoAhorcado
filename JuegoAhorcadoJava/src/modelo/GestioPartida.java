@@ -13,9 +13,9 @@ public class GestioPartida {
     
     //10 errors i game over
     private static int punts;
-    private String paraula;
+    private static String paraula;
     
-    private void partida(){
+    public static void partida(){
         
         Scanner sc = new Scanner(System.in);
         paraula = paraulaAleatoria();
@@ -92,6 +92,7 @@ public class GestioPartida {
                 }
             }
         }
+        GestioRanking.afegirRanking();
     }
 
     public static int getPunts() {
@@ -101,7 +102,7 @@ public class GestioPartida {
     
     
     
-    private String paraulaAleatoria(){
+    private static String paraulaAleatoria(){
        ArrayList<String> paraules = GestioFitxer.getLlistaParaules();
        int num = (int) Math.random() * (paraules.size()-1);
        
