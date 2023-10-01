@@ -48,14 +48,14 @@ public class GestioRanking {
         for (int i = 1; i < 24; i++) {
             primeraVolta = true;
             existeixNum = false;
-            for (int j = 0; j < rankings.size(); j+=5) {
+            for (int j = 0; j < rankings.size(); j+=4) {
                 if(i == Integer.valueOf(rankings.get(j + 3))){
                     existeixNum = true;
                 }
             }
             if(existeixNum){
                 noParaules = false;
-                for (int j = 0; j < rankings.size(); j+=5) {
+                for (int j = 0; j < rankings.size(); j+=4) {
                 
                 if(primeraVolta){
                     numParaulaAux = i;
