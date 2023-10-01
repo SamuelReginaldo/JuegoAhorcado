@@ -70,7 +70,7 @@ public class GestioPartida {
                 acert = false;
                 for(int i = 0; i<paraula.length(); i++){
                     if(lletraProbar.equalsIgnoreCase(String.valueOf(paraula.charAt(i)))){
-                        paraulaMostrar.add(i, lletraProbar.charAt(0));
+                        paraulaMostrar.set(i, lletraProbar.toUpperCase().charAt(0));
                         acert = true;
                     }      
                 }
@@ -117,7 +117,7 @@ public class GestioPartida {
     
     private static String paraulaAleatoria(){
        ArrayList<String> paraules = GestioFitxer.getLlistaParaules();
-       int num = (int) Math.random() * (paraules.size()-1);
+       int num = (int) (Math.random() * (paraules.size() - 1));
        
        return paraules.get(num);
     }
